@@ -1,0 +1,32 @@
+{
+  "name": "Breaker HD",
+  "identifier": "com.c15co.breakerhd.source",
+  "subtitle": "Tiny resets. Back to the thing.",
+  "description": "A controlled substitute for distraction.",
+  "iconURL": "https://github.com/c15c/BreakerHD/releases/download/v0.1.0/AppIcon-1024.png",
+  "website": "https://github.com/c15c/BreakerHD",
+  "apps": [
+    {
+      "name": "Breaker HD",
+      "bundleIdentifier": "com.c15co.breakerhd",
+      "developerName": "Cisco",
+      "subtitle": "Tiny resets. Back to the thing.",
+      "localizedDescription": "Start the task you already know you need to do. When your brain wants novelty, tap one button for a deliberately tiny reset, then return to the task. No lists, streaks, accounts, ads or analytics.",
+      "iconURL": "https://github.com/c15c/BreakerHD/releases/download/v0.1.0/AppIcon-1024.png",
+      "tintColor": "#C8FF3D",
+      "category": "productivity",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "buildVersion": "1",
+          "date": "2026-09-22",
+          "downloadURL": "https://github.com/c15c/BreakerHD/releases/download/v0.1.0/BreakerHD.ipa",
+          "size": 5000000,
+          "minOSVersion": "17.0",
+          "localizedDescription": "Initial release with six finite novelty bursts, on-device escape-signature learning, proactive nudges, haptics and sound preferences."
+        }
+      ]
+    }
+  ],
+  "news": []
+}
