@@ -101,7 +101,7 @@ struct CadenceResetView: View {
     private func play() {
         guard !playing else { return }
         playing = true
-        let beats: [(Double, UIImpactFeedbackGenerator.FeedbackStyle)] = [(0,.light),(.32,.medium),(.58,.light),(.92,.heavy)]
+        let beats: [(Double, UIImpactFeedbackGenerator.FeedbackStyle)] = [(0, .light), (0.32, .medium), (0.58, .light), (0.92, .heavy)]
         for (i, beat) in beats.enumerated() {
             DispatchQueue.main.asyncAfter(deadline: .now() + beat.0) {
                 pulse = i + 1; store.impact(beat.1)
@@ -172,6 +172,6 @@ struct AsideResetView: View {
         VStack(spacing: 30) {
             Text("A BRIEF ADMINISTRATIVE NOTE").font(.caption2.weight(.black)).tracking(3).foregroundStyle(acid.opacity(0.7))
             Text(line).font(.system(size: 31, weight: .medium, design: .serif)).multilineTextAlignment(.center).lineSpacing(7)
-        }.padding(20).opacity(visible ? 1 : 0).onAppear { withAnimation(.easeOut(duration: .7)) { visible = true } }
+        }.padding(20).opacity(visible ? 1 : 0).onAppear { withAnimation(.easeOut(duration: 0.7)) { visible = true } }
     }
 }
