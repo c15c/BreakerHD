@@ -1,5 +1,22 @@
 import Foundation
 
+enum ResetVersion: String, Codable, CaseIterable, Identifiable {
+    case v1, v2, mixed
+    var id: String { rawValue }
+    var title: String {
+        switch self {
+        case .v1: return "V1 · Playful"
+        case .v2: return "V2 · Refined"
+        case .mixed: return "Alternate"
+        }
+    }
+}
+
+enum RefinedResetKind: String, Codable, CaseIterable, Identifiable {
+    case resolve, cadence, perspective, observation, release, aside
+    var id: String { rawValue }
+}
+
 enum StimulationKind: String, Codable, CaseIterable, Identifiable {
     case visual, choice, trivia, reaction, movement, anticipation
 
@@ -35,6 +52,8 @@ struct EscapeEvent: Codable, Identifiable {
     let secondsIntoSession: TimeInterval
     let task: String
     let stimulation: StimulationKind
+    var resetVersion: ResetVersion?
+    var refinedReset: RefinedResetKind?
 }
 
 struct FocusSession: Codable, Identifiable {
@@ -51,6 +70,7 @@ struct AppSettings: Codable {
     var hapticsEnabled = true
     var soundsEnabled = true
     var proactiveNudgesEnabled = true
+    var resetVersion: ResetVersion? = .v2
 }
 
 struct PersistedData: Codable {

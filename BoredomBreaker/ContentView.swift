@@ -1,9 +1,9 @@
 import SwiftUI
 
-private let ink = Color(red: 0.96, green: 0.94, blue: 0.89)
-private let acid = Color(red: 0.78, green: 1.00, blue: 0.24)
-private let violet = Color(red: 0.55, green: 0.39, blue: 1.00)
-private let midnight = Color(red: 0.035, green: 0.04, blue: 0.07)
+let ink = Color(red: 0.96, green: 0.94, blue: 0.89)
+let acid = Color(red: 0.78, green: 1.00, blue: 0.24)
+let violet = Color(red: 0.55, green: 0.39, blue: 1.00)
+let midnight = Color(red: 0.035, green: 0.04, blue: 0.07)
 
 struct ContentView: View {
     @EnvironmentObject private var store: AppStore
@@ -15,7 +15,7 @@ struct ContentView: View {
             case .home:
                 if store.data.hasOnboarded { HomeView() } else { OnboardingView() }
             case .focus: FocusView()
-            case .reward: RewardContainerView(kind: store.activeReward)
+            case .reward: ResetExperienceView()
             case .summary: SummaryView()
             case .settings: SettingsView()
             }
@@ -359,7 +359,19 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Tiny resets") {
+                Section("Reset experiment") {
+                    Picker("Style", selection: Binding(
+                        get: { store.data.settings.resetVersion ?? .v2 },
+                        set: { store.data.settings.resetVersion = $0; store.save() }
+                    )) {
+                        ForEach(ResetVersion.allCases) { version in
+                            Text(version.title).tag(version)
+                        }
+                    }
+                    Text("V1 keeps the original mini-games. V2 uses restrained sensory and cognitive interruptions. Alternate mixes both for comparison.")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+                Section("V1 reset types") {
                     ForEach(StimulationKind.allCases) { kind in
                         Toggle(isOn: Binding(get: { store.data.settings.selectedKinds.contains(kind) }, set: { on in
                             if on { store.data.settings.selectedKinds.insert(kind) } else { store.data.settings.selectedKinds.remove(kind) }; store.save()

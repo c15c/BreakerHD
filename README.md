@@ -15,7 +15,7 @@ Once the first GitHub Actions build finishes, **Breaker HD** will appear in the 
 ## MVP
 
 - One task, one timer and one escape button
-- Six personalised 5–10 second novelty bursts
+- V1 playful resets and V2 refined sensory/cognitive resets, with an Alternate comparison mode
 - Automatic return so the reset cannot become the distraction
 - Local-only escape-signature learning and lightweight proactive nudges
 - Haptic, sound and intervention preferences

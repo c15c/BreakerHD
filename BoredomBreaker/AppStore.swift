@@ -12,6 +12,8 @@ final class AppStore: ObservableObject {
     @Published var currentSession: FocusSession?
     @Published var now = Date()
     @Published var activeReward: StimulationKind = .visual
+    @Published var activeResetVersion: ResetVersion = .v2
+    @Published var activeRefinedReset: RefinedResetKind = .resolve
     @Published var showNudge = false
 
     private let storageKey = "BoredomBreaker.Data.v1"
@@ -75,11 +77,14 @@ final class AppStore: ObservableObject {
 
     func requestReward() {
         guard var session = currentSession else { return }
+        let preference = data.settings.resetVersion ?? .v2
+        activeResetVersion = preference == .mixed ? (Bool.random() ? .v1 : .v2) : preference
         let options = data.settings.selectedKinds.isEmpty ? StimulationKind.allCases : Array(data.settings.selectedKinds)
         activeReward = options.randomElement() ?? .visual
+        activeRefinedReset = RefinedResetKind.allCases.randomElement() ?? .resolve
         session.escapeCount += 1
         currentSession = session
-        data.events.append(EscapeEvent(id: UUID(), sessionID: session.id, occurredAt: Date(), secondsIntoSession: elapsed, task: session.task, stimulation: activeReward))
+        data.events.append(EscapeEvent(id: UUID(), sessionID: session.id, occurredAt: Date(), secondsIntoSession: elapsed, task: session.task, stimulation: activeReward, resetVersion: activeResetVersion, refinedReset: activeResetVersion == .v2 ? activeRefinedReset : nil))
         showNudge = false
         screen = .reward
         save()

@@ -17,13 +17,13 @@
       "category": "productivity",
       "versions": [
         {
-          "version": "0.1.0",
-          "buildVersion": "1",
+          "version": "0.2.0",
+          "buildVersion": "2",
           "date": "2026-09-22",
           "downloadURL": "https://github.com/c15c/BreakerHD/releases/download/v0.1.0/BreakerHD.ipa",
           "size": 5000000,
           "minOSVersion": "17.0",
-          "localizedDescription": "Initial release with six finite novelty bursts, on-device escape-signature learning, proactive nudges, haptics and sound preferences."
+          "localizedDescription": "Adds V2 refined sensory and cognitive resets while preserving every V1 reset for direct comparison. Choose V1, V2 or Alternate in Settings."
         }
       ]
     }
