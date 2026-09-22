@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Restore app icon
-        run: base64 --decode AppIcon.base64 > BoredomBreaker/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png
+        run: base64 -D -i AppIcon.base64 -o BoredomBreaker/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png
       - name: Build iPhone app
         run: |
           xcodebuild \
