@@ -1,0 +1,8 @@
+.DS_Store
+build/
+DerivedData/
+Payload/
+*.ipa
+*.xcuserstate
+xcuserdata/
+BoredomBreaker/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png
